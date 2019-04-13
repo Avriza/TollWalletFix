@@ -88,8 +88,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Button signin = (Button) findViewById(R.id.email_sign_in_button);
         signin.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
-                attemptLogin();
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,Dashboard.class));
             }
         });
 

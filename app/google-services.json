@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "294433354956",
+    "firebase_url": "https://cardetection-50617.firebaseio.com",
+    "project_id": "cardetection-50617",
+    "storage_bucket": "cardetection-50617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294433354956:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294433354956-b41g0ma16v1vucim4gi3mj92kop86mg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqEyLqgRLU0Mbp9Jxn74dDH0La-KEJb2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294433354956-b41g0ma16v1vucim4gi3mj92kop86mg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

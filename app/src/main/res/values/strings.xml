@@ -18,4 +18,9 @@
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="wallet">Wallet</string>
+    <string name="saldo">Saldo</string>
+    <string name="id_alat">ID Alat</string>
+    <string name="tipe_mobil">Tipe Mobil</string>
+    <string name="plat_nomor">Plat Nomor</string>
+    <string name="title_activity_login">Login</string>
 </resources>

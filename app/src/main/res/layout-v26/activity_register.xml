@@ -5,64 +5,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingVertical="30dp"
-        android:paddingHorizontal="30dp"
-        android:orientation="vertical">
-        <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginVertical="20dp"/>
-        <EditText
-            android:id="@+id/reg_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:hint="@string/name"
-            android:padding="25dp"/>
+            android:layout_height="match_parent"
+            android:paddingVertical="30dp"
+            android:paddingHorizontal="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/colorPrimary" />
+            <EditText
+                android:id="@+id/reg_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/name"
+                android:padding="25dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/email"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginVertical="20dp"/>
-        <EditText
-            android:id="@+id/reg_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:hint="@string/email"
-            android:padding="25dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+            <EditText
+                android:id="@+id/reg_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/email"
+                android:padding="25dp"
+                android:inputType="textEmailAddress"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginVertical="20dp"/>
-        <EditText
-            android:id="@+id/reg_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:hint="@string/password"
-            android:padding="25dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+            <EditText
+                android:id="@+id/reg_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/password"
+                android:padding="25dp"
+                android:inputType="textPassword"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"
-            android:text="@string/sign_up"
-            android:layout_marginTop="20dp"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/plat_nomor"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+
+            <EditText
+                android:id="@+id/plat_nomor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/plat_nomor"
+                android:padding="25dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tipe_mobil"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+            <EditText
+                android:id="@+id/tipe_mobil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/tipe_mobil"
+                android:padding="25dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/id_alat"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+            <EditText
+                android:id="@+id/id_alat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/id_alat"
+                android:padding="25dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saldo"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginVertical="20dp"/>
+            <EditText
+                android:id="@+id/saldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:hint="@string/saldo"
+                android:padding="25dp"
+                android:inputType="number"/>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorAccent"
+                android:text="@string/sign_up"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

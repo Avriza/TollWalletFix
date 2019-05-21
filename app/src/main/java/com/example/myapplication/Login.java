@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,7 +30,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
         email = (EditText) findViewById(R.id.email2);

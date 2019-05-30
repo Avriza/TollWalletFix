@@ -24,7 +24,7 @@ public class Dashboard extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference reff;
-    private Button topup;
+    private Button topup,trans_but;
     private TextView cur_saldo;
 
     @Override
@@ -33,8 +33,23 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         cur_saldo = (TextView) findViewById(R.id.cur_saldo);
+        trans_but = (Button) findViewById(R.id.transaksi_but);
 
 
+        topup = (Button) findViewById(R.id.topup);
+        topup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, TambahSaldo.class));
+            }
+        });
+
+        trans_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this,ListTransaksi.class));
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() == null){
@@ -64,14 +79,6 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
-        topup = (Button) findViewById(R.id.topup);
-        topup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, TambahSaldo.class));
             }
         });
     }

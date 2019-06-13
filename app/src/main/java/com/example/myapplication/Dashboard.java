@@ -55,7 +55,7 @@ public class Dashboard extends AppCompatActivity {
         if(mAuth.getCurrentUser() == null){
             startActivity(new Intent(this, Login.class));
         }
-        FirebaseUser user= mAuth.getCurrentUser();
+            FirebaseUser user= mAuth.getCurrentUser();
 
 
         /* BUAT UPDATE DATABASE*/
@@ -64,15 +64,13 @@ public class Dashboard extends AppCompatActivity {
         DatabaseReference reff = database.getReference("Data User").child(user.getUid()).child("saldo");
         /*reff.setValue("12345678");*/
 
-
-        Log.d("asd", String.valueOf(reff));
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 /*DataKendaraan information =dataSnapshot.getValue(DataKendaraan.class);*/
                 String information =dataSnapshot.getValue(String.class);
 
-                Log.d("saldo", "maunya apa "+information);
+                /*Log.d("saldo", "maunya apa "+information);*/
                 cur_saldo.setText("Rp "+information);
             }
 

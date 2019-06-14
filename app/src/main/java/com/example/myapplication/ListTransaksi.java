@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,12 +22,12 @@ import java.util.List;
 
 public class ListTransaksi extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private DatabaseReference reff;
-    private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
-    private ArrayList<UserInformation> userList;
+    FirebaseAuth mAuth;
+    FirebaseDatabase database;
+    DatabaseReference reff;
+    RecyclerView recyclerView;
+    UserAdapter userAdapter;
+    ArrayList<UserInformation> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,43 +36,46 @@ public class ListTransaksi extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*final FirebaseUser user= mAuth.getCurrentUser();*/
         database = FirebaseDatabase.getInstance();
-        DatabaseReference reff = database.getReference("Data User");
+        reff = database.getReference("Data User");
 
-        /*userList = new ArrayList<>();
+        userList = new ArrayList<>();
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
                     UserInformation userInformation = dataSnapshot1.getValue(UserInformation.class);
-                    String name = userInformation.getName();
+                    /*String name = userInformation.getName();
                     String pass = userInformation.getPass();
                     String email = userInformation.getEmail();
                     String plat = userInformation.getPlat();
                     String saldo = userInformation.getSaldo();
+                    String alat = userInformation.getAlat();
                     userInformation.setName(name);
                     userInformation.setPass(pass);
                     userInformation.setEmail(email);
                     userInformation.setPlat(plat);
-                    userInformation.setSaldo(saldo);
-
+                    userInformation.setSaldo(saldo);*/
                     userList.add(userInformation);
+
                 }
+                recyclerView = (RecyclerView) findViewById(R.id.list_item);
+                userAdapter = new UserAdapter(userList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListTransaksi.this);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(userAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
-        addData();
+        /*addData();*/
+
         Log.d("asd", String.valueOf(userList));
-        recyclerView = (RecyclerView) findViewById(R.id.list_item);
-        userAdapter = new UserAdapter(userList);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListTransaksi.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(userAdapter);
+
     }
 
     private void addData() {

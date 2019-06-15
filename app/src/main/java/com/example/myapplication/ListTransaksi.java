@@ -47,7 +47,6 @@ public class ListTransaksi extends AppCompatActivity {
                     transaksiList.add(transaksi);
                 }
                 recyclerView = (RecyclerView) findViewById(R.id.list_item);
-                Log.d("asd", String.valueOf(transaksiList));
                 userAdapter = new UserAdapter(transaksiList);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListTransaksi.this);
                 recyclerView.setLayoutManager(layoutManager);
@@ -59,8 +58,5 @@ public class ListTransaksi extends AppCompatActivity {
 
             }
         });
-
-        /*addData();*/
-
     }
 }

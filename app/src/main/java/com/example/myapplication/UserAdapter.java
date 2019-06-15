@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
     Context context;
-    private ArrayList<UserInformation> dataList;
+    private ArrayList<Transaksi> dataList;
 
-    public UserAdapter(ArrayList<UserInformation> dataList) {
+    public UserAdapter(ArrayList<Transaksi> dataList) {
         this.dataList = dataList;
     }
 
@@ -28,12 +28,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int i) {
-        holder.txtNama.setText(dataList.get(i).getName());
-        holder.txtEmail.setText(dataList.get(i).getEmail());
-        holder.txtPass.setText(dataList.get(i).getPass());
-        holder.txtAlat.setText(dataList.get(i).getAlat());
-        holder.txtPlat.setText(dataList.get(i).getPlat());
-        holder.txtSaldo.setText(dataList.get(i).getSaldo());
+        holder.txtGateIn.setText(dataList.get(i).getGateIn());
+        holder.txtGateOut.setText(dataList.get(i).getGateOut());
+        holder.txtDate.setText(dataList.get(i).getDateIn());
+        holder.txtTarif.setText("Rp " + dataList.get(i).getTarif());
     }
 
     @Override
@@ -43,16 +41,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
 
     public class UserViewHolder extends RecyclerView.ViewHolder{
-        private TextView txtNama, txtEmail, txtPass, txtAlat, txtPlat, txtSaldo;
+        private TextView txtGateIn,txtGateOut, txtDate, txtTarif;
 
         public UserViewHolder(View itemView) {
             super(itemView);
-            txtNama= (TextView) itemView.findViewById(R.id.name_item);
-            txtEmail = (TextView) itemView.findViewById(R.id.email_item);
-            txtPass = (TextView) itemView.findViewById(R.id.pass_item);
-            txtAlat= (TextView) itemView.findViewById(R.id.alat_item);
-            txtPlat= (TextView) itemView.findViewById(R.id.plat_item);
-            txtSaldo= (TextView) itemView.findViewById(R.id.saldo_item);
+            txtGateIn= (TextView) itemView.findViewById(R.id.gateIn);
+            txtGateOut = (TextView) itemView.findViewById(R.id.gateOut);
+            txtDate = (TextView) itemView.findViewById(R.id.date);
+            txtTarif= (TextView) itemView.findViewById(R.id.tarif);
         }
     }
 }

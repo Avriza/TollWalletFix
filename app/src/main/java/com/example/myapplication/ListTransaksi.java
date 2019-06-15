@@ -27,7 +27,7 @@ public class ListTransaksi extends AppCompatActivity {
     DatabaseReference reff;
     RecyclerView recyclerView;
     UserAdapter userAdapter;
-    ArrayList<UserInformation> userList;
+    ArrayList<Transaksi> transaksiList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +36,19 @@ public class ListTransaksi extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*final FirebaseUser user= mAuth.getCurrentUser();*/
         database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Data User");
+        reff = database.getReference("DataTransaksi").child("4477996");
 
-        userList = new ArrayList<>();
+        transaksiList = new ArrayList<>();
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-                    UserInformation userInformation = dataSnapshot1.getValue(UserInformation.class);
-                    /*String name = userInformation.getName();
-                    String pass = userInformation.getPass();
-                    String email = userInformation.getEmail();
-                    String plat = userInformation.getPlat();
-                    String saldo = userInformation.getSaldo();
-                    String alat = userInformation.getAlat();
-                    userInformation.setName(name);
-                    userInformation.setPass(pass);
-                    userInformation.setEmail(email);
-                    userInformation.setPlat(plat);
-                    userInformation.setSaldo(saldo);*/
-                    userList.add(userInformation);
-
+                    Transaksi transaksi= dataSnapshot1.getValue(Transaksi.class);
+                    transaksiList.add(transaksi);
                 }
                 recyclerView = (RecyclerView) findViewById(R.id.list_item);
-                userAdapter = new UserAdapter(userList);
+                Log.d("asd", String.valueOf(transaksiList));
+                userAdapter = new UserAdapter(transaksiList);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListTransaksi.this);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(userAdapter);
@@ -73,19 +62,5 @@ public class ListTransaksi extends AppCompatActivity {
 
         /*addData();*/
 
-        Log.d("asd", String.valueOf(userList));
-
-
-    }
-
-    private void addData() {
-        userList = new ArrayList<>();
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
-        userList.add(new UserInformation("asd","pass","asd@gmail.com","123","D 123 AD","Rp 25000"));
     }
 }

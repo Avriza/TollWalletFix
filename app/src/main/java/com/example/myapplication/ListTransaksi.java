@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,9 @@ public class ListTransaksi extends AppCompatActivity {
         setContentView(R.layout.activity_list_transaksi);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*final FirebaseUser user= mAuth.getCurrentUser();*/
+
+        Trace myTrace = FirebasePerformance.getInstance().newTrace("test_trace");
+        myTrace.start();
         database = FirebaseDatabase.getInstance();
         reff = database.getReference("DataTransaksi").child("4477996");
 
@@ -58,5 +63,7 @@ public class ListTransaksi extends AppCompatActivity {
 
             }
         });
+
+        myTrace.stop();
     }
 }

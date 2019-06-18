@@ -18,7 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.HttpMetric;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -36,6 +42,12 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        try {
+            networkTest();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         cur_saldo = (TextView) findViewById(R.id.cur_saldo);
         trans_but = (Button) findViewById(R.id.transaksi_but);
@@ -111,5 +123,31 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void networkTest() throws Exception {
+        byte[] data = "badgerbadgerbadgerbadgerMUSHROOM!".getBytes();
+
+        // [START perf_manual_network_trace]
+        HttpMetric metric =
+                FirebasePerformance.getInstance().newHttpMetric("https://www.google.com",
+                        FirebasePerformance.HttpMethod.GET);
+        final URL url = new URL("https://www.google.com");
+        metric.start();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
+        try {
+            DataOutputStream outputStream = new DataOutputStream(conn.getOutputStream());
+            outputStream.write(data);
+        } catch (IOException ignored) {
+        }
+        metric.setRequestPayloadSize(data.length);
+        metric.setHttpResponseCode(conn.getResponseCode());
+        /*printStreamContent(conn.getInputStream());*/
+
+        conn.disconnect();
+        metric.stop();
+        // [END perf_manual_network_trace]
     }
 }

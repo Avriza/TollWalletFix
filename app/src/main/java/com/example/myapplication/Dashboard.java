@@ -32,8 +32,8 @@ public class Dashboard extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
-    private DatabaseReference reff, reff_countSaldo;
-    private Button topup,trans_but;
+    private DatabaseReference reff, reff_countSaldo, reff_add_trans;
+    private Button topup,trans_but, add_trans;
     private TextView cur_saldo;
     String info_saldo;
     int tarif, info_saldo_int;
@@ -51,7 +51,14 @@ public class Dashboard extends AppCompatActivity {
 
         cur_saldo = (TextView) findViewById(R.id.cur_saldo);
         trans_but = (Button) findViewById(R.id.transaksi_but);
+        add_trans = (Button) findViewById(R.id.add_transaksi_but);
 
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() == null){
+            startActivity(new Intent(this, Login.class));
+        }
+        FirebaseUser user= mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
 
         topup = (Button) findViewById(R.id.topup);
         topup.setOnClickListener(new View.OnClickListener() {
@@ -68,14 +75,15 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() == null){
-            startActivity(new Intent(this, Login.class));
-        }
-            FirebaseUser user= mAuth.getCurrentUser();
+        reff_add_trans = database.getReference().child("DataTransaksi").child("4477996");
+        add_trans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String key = database.getReference().child("Data Transaksi").child("4477996").push().getKey();
+                Transaksi transaksi = new Transaksi("123","456","Buah Batu", "Cikarang", "false", "10000", "sedan");
+                reff_add_trans.child(key).setValue(transaksi);            }
+        });
 
-        /* BUAT UPDATE DATABASE*/
-        database = FirebaseDatabase.getInstance();
         reff = database.getReference("Data User").child(user.getUid()).child("saldo");
 
         reff.addValueEventListener(new ValueEventListener() {

@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Register extends AppCompatActivity {
-    private EditText reg_name, reg_email, reg_pass, id_alat, plat_nomor, saldo;
+    private EditText reg_name, reg_email, reg_pass, id_alat, plat_nomor;
     private Button reg_but;
 
     private FirebaseAuth mAuth;
@@ -41,7 +41,6 @@ public class Register extends AppCompatActivity {
         reg_pass= (EditText) findViewById(R.id.reg_pass);
         id_alat= (EditText) findViewById(R.id.id_alat);
         plat_nomor= (EditText) findViewById(R.id.plat_nomor);
-        saldo= (EditText) findViewById(R.id.saldo);
         reg_but= (Button) findViewById(R.id.register_button);
 
         reg_but.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +57,7 @@ public class Register extends AppCompatActivity {
         final String pass = reg_pass.getText().toString().trim();
         final String alat = id_alat.getText().toString().trim();
         final String plat = plat_nomor.getText().toString().trim();
-        final String saldoInfo = saldo.getText().toString().trim();
+        final String saldoInfo = "0";
 
         if(TextUtils.isEmpty(name)){
             reg_name.setError("Required");
@@ -85,10 +84,6 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        if(TextUtils.isEmpty(saldoInfo)){
-            saldo.setError("Required");
-            return;
-        }
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

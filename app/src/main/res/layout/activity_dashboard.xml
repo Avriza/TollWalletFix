@@ -55,5 +55,14 @@
             android:layout_marginTop="50dp"
             android:background="@color/white"
             android:text="List Transaksi"/>
+
+        <Button
+            android:id="@+id/add_transaksi_but"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="50dp"
+            android:background="@color/white"
+            android:text="Tambah Transaksi"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
